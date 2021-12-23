@@ -1,16 +1,23 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 import Layout from '@/components/shared/layouts/Layout';
 import Link from 'next/link';
+import { useGetPosts } from '@/actions';
+const Portfolios = () => {
+  const { data, loading, error } = useGetPosts();
+  const posts = data?.posts;
 
-const Portfolios = ({ posts }) => {
   const renderPosts = () => {
-    return posts.map((post) => (
-      <li key={post.id}>
-        <Link href={`/portfolios/${post.id}`}>{post.title}</Link>
-      </li>
-    ));
+    console.log(loading);
+    if (loading) return <div>Loading...</div>;
+    return (
+      posts &&
+      posts.map((post) => (
+        <li key={post.id}>
+          <Link href={`/portfolios/${post.id}`}>{post.title}</Link>
+        </li>
+      ))
+    );
   };
 
   return (
@@ -24,11 +31,3 @@ const Portfolios = ({ posts }) => {
 };
 
 export default Portfolios;
-
-Portfolios.getInitialProps = async () => {
-  const { data } = await axios.get(
-    'https://jsonplaceholder.typicode.com/posts'
-  );
-
-  return { posts: data.slice(0, 10) };
-};
