@@ -4,7 +4,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div>
-      <Link href='/'>
+      <Link href='/' className='m-5'>
         <a>Home</a>
       </Link>
       <Link href='/about'>
@@ -19,6 +19,9 @@ const Header = () => {
       <Link href='/cv'>
         <a>cv</a>
       </Link>
+
+      <button>Login</button>
+      <button>logout</button>
     </div>
   );
 };

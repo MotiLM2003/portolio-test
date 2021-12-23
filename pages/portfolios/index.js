@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import Layout from '../../components/shared/layouts/Layout';
+import Layout from '@/components/shared/layouts/Layout';
 import Link from 'next/link';
 
 const Portfolios = ({ posts }) => {

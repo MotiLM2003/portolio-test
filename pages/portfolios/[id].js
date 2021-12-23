@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../../components/shared/layouts/Layout';
+import Layout from '@/components/shared/layouts/Layout';
 import axios from 'axios';
 
 const PostDetails = ({ post }) => {
